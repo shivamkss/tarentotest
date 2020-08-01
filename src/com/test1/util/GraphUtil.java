@@ -1,9 +1,8 @@
 package com.test1.util;
 
 import java.util.Arrays;
-import java.util.Deque;
 import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.Stack;
 
 public class GraphUtil {
 
@@ -101,7 +100,7 @@ public class GraphUtil {
 	 */
 	public void iterateOnGraph() {
 		System.out.println("Starting path from root node " + rootNode.getValue());
-		Deque<Integer> pathList = new LinkedList<Integer>();
+		Stack<Integer> pathList = new Stack<Integer>();
 		iterate(rootNode, pathList);
 	}
 
@@ -110,14 +109,14 @@ public class GraphUtil {
 	 * 
 	 * @param root
 	 */
-	private void iterate(Node root, Deque<Integer> pathList) {
-		pathList.addLast(root.getValue());
+	private void iterate(Node root, Stack<Integer> pathList) {
+		pathList.add(root.getValue());
 		if (root.getChildList().size() == 0) {
 			Iterator<Integer> i = pathList.iterator();
 			while (i.hasNext()) {
 				System.out.print(i.next() + "->");
 			}
-			pathList.removeLast();
+			pathList.pop();
 			System.out.println("\n------");
 			return;
 		}
@@ -125,7 +124,7 @@ public class GraphUtil {
 		for (Iterator<Node> i = root.getChildList().iterator(); i.hasNext();) {
 			iterate(i.next(), pathList);
 		}
-		pathList.removeLast();
+		pathList.pop();
 	}
 
 	/**
@@ -141,7 +140,7 @@ public class GraphUtil {
 			return;
 		}
 
-		Deque<Integer> pathList = new LinkedList<Integer>();
+		Stack<Integer> pathList = new Stack<Integer>();
 		iterate(node, pathList);
 	}
 }

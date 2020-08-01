@@ -20,9 +20,8 @@ public class DAGPathResolver {
 
 		// adding some nodes
 		// first argument is item value, other arguments define its parent.
-		graphObj.addNode(2, 2);
+		graphObj.addNode(2, 1);
 		graphObj.addNode(3, 1);
-		graphObj.addNode(1, 3);
 		graphObj.addNode(4, 1);
 		graphObj.addNode(5, 1);
 		graphObj.addNode(6, 2, 3);
